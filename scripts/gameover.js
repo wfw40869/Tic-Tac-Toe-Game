@@ -1,5 +1,5 @@
 const gameOver = () => {
-    window.addEventListener("click", (event) => {
-        event.stopPropagation()
+    gameBoard.removeEventListener("click", (event) => {
+        console.log(event)
     }, true)
 }
