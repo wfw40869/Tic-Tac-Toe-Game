@@ -3,18 +3,21 @@ const watchForUserClicks = (gameBoardArray) => {
     let userId = 1
     gameBoardArray.forEach(square => {
         square.addEventListener("click", (e) => {
-            // console.log(`The clicked box id is: ${e.target.id}`)
+            // grab the square that was clicked
             const clickedSquare = e.target
 
             const clickedSquareId = parseInt(clickedSquare.id)
-            // check if the square has an X or O already
-            if (clickedSquare.textContent === "") {
-                // populate that square to the DOM
-                clickedSquare.textContent = returnXorO(userId)
-            }
-
-            if (checkUserSquares(usersObj, clickedSquareId)) {
-                usersObj[`user${userId}`].squares.push(clickedSquareId)
+            
+            if (checkUserSquares(usersObj, clickedSquareId, clickedSquare)) {
+                // check if the square has an X or O already
+                if (clickedSquare.textContent === "") {
+                    // populate that square to the DOM
+                    clickedSquare.textContent = returnXorO(userId)
+                    // add the id of the square to the corresponding user object array
+                    usersObj[`user${userId}`].squares.push(clickedSquareId)
+                    // Update userID
+                    userId = trackUserTurn(userId, clickedSquare)
+                }
             }
 
 
@@ -32,8 +35,6 @@ const watchForUserClicks = (gameBoardArray) => {
                 playAgainFunction()
             }
 
-            // Update userID
-            userId = trackUserTurn(userId)
             // console.log(`The user ID for the next turn is ${userId}`)
         })
     });

@@ -32,7 +32,9 @@ const htmlSquares = document.querySelectorAll(".square")
 
 
 // Execute the main function
-watchForUserClicks(htmlSquares)
+const winner = watchForUserClicks(htmlSquares)
+
+console.log(winner)
 
 
 
