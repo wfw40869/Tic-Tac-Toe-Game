@@ -23,6 +23,9 @@ const watchForUserClicks = (gameBoardArray) => {
             if (winner !== undefined) {
                 alert(`${winner} WON!!`)
                 gameOver()
+            } else if (winner === undefined && usersObj.user1.squares.length === 5) {
+                alert(`Tie...`)
+                gameOver()
             }
 
             // Update userID
