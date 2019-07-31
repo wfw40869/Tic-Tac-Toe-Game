@@ -13,8 +13,9 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 100vw;
+  max-width: 1080px;
   height: 100vh;
+  margin: 0 auto;
 }
 
 .square {
